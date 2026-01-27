@@ -1,0 +1,77 @@
+name: Hotfix
+description: Urgent production fix (branch: hotfix/* from production)
+title: "[Hotfix]: "
+labels: ["type: hotfix", "priority: P0", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Branching rule (IMPORTANT)
+        Create a branch from `production`:
+        - `hotfix/<issue-number>-<short-slug>`
+        Example: `hotfix/321-critical-500-on-search`
+
+  - type: textarea
+    id: incident
+    attributes:
+      label: Incident summary
+      description: Impact, affected users, and current status.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Frontend (Next.js)
+        - Backend (Django REST Framework)
+        - API contract
+        - Database
+        - CI/CD & DevOps
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: root_cause
+    attributes:
+      label: Suspected root cause
+      description: Best current hypothesis (update as you learn more).
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix_plan
+    attributes:
+      label: Fix plan
+      placeholder: |
+        - What will be changed?
+        - How will it be validated quickly?
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: Smoke tests, monitors/alerts to watch, reproduction steps, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Rollback plan
+      description: If this fails in production, how do we revert safely?
+    validations:
+      required: true
+
+  - type: input
+    id: branch_name
+    attributes:
+      label: Suggested branch name
+      description: Must start with `hotfix/` and be created from `production`.
+      placeholder: "hotfix/321-critical-500-on-search"
+    validations:
+      required: true

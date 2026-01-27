@@ -1,0 +1,80 @@
+name: Feature
+description: Request a new feature (branch: feature/* from master)
+title: "[Feature]: "
+labels: ["type: feature", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Branching rule
+        Create a branch from `master`:
+        - `feature/<issue-number>-<short-slug>`
+        Example: `feature/123-add-isbn-search`
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Frontend (Next.js)
+        - Backend (Django REST Framework)
+        - API contract
+        - Database
+        - CI/CD & DevOps
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What user or business problem are we solving?
+      placeholder: |
+        Describe the pain point and who is affected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: High-level approach (UI, API endpoints, models, data flow, etc.).
+      placeholder: |
+        - What changes?
+        - Any alternatives considered?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Provide testable, checklist-style outcomes.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Out of scope
+      description: Clarify what will NOT be handled in this issue.
+
+  - type: input
+    id: branch_name
+    attributes:
+      label: Suggested branch name
+      description: Must start with `feature/` and be created from `master`.
+      placeholder: "feature/123-add-isbn-search"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Implementation notes
+      description: Include migrations, testing strategy, edge cases, performance/security considerations.

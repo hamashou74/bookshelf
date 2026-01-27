@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions / Support
+    url: https://github.com/hamashou74/bookshelf/discussions
+    about: Use Discussions for usage questions, ideas, and broader design topics.
+
+  - name: Security Vulnerability Report
+    url: https://github.com/hamashou74/bookshelf/security/advisories/new
+    about: Please report sensitive security issues privately via Security Advisories.
