@@ -1,0 +1,72 @@
+name: Release
+description: Release preparation and tracking (branch: release/* from master)
+title: "[Release]: "
+labels: ["type: release", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Branching rule
+        Create a branch from `master`:
+        - `release/<version>`
+        Examples: `release/v1.4.0`
+
+  - type: input
+    id: target_version
+    attributes:
+      label: Target version / tag
+      placeholder: "v1.4.0"
+    validations:
+      required: true
+
+  - type: input
+    id: target_date
+    attributes:
+      label: Target release date (optional)
+      placeholder: "YYYY-MM-DD"
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (what’s included)
+      placeholder: |
+        - PRs/issues:
+        - Notable changes:
+    validations:
+      required: true
+
+  - type: textarea
+    id: release_notes
+    attributes:
+      label: Release notes draft
+      placeholder: |
+        ## Added
+        ## Changed
+        ## Fixed
+        ## Security
+    validations:
+      required: true
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Release checklist
+      placeholder: |
+        - [ ] All required PRs merged to `master`
+        - [ ] Migrations reviewed and tested
+        - [ ] Frontend build passes (Next.js)
+        - [ ] Backend tests pass (Django/DRF)
+        - [ ] Staging smoke test complete
+        - [ ] Tag created
+        - [ ] Deploy procedure validated
+    validations:
+      required: true
+
+  - type: input
+    id: branch_name
+    attributes:
+      label: Suggested branch name
+      description: Must start with `release/` and be created from `master`.
+      placeholder: "release/v1.4.0"
+    validations:
+      required: true

@@ -1,0 +1,104 @@
+name: Fix (Bug)
+description: Report a defect to be fixed (branch: fix/* from master)
+title: "[Fix]: "
+labels: ["type: fix", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Branching rule
+        Create a branch from `master`:
+        - `fix/<issue-number>-<short-slug>`
+        Example: `fix/456-login-redirect-loop`
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity / priority
+      options:
+        - P0 (Production down / critical data loss)
+        - P1 (Major functionality broken)
+        - P2 (Partial impact / workaround exists)
+        - P3 (Minor / cosmetic)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Frontend (Next.js)
+        - Backend (Django REST Framework)
+        - API contract
+        - Database
+        - CI/CD & DevOps
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is the bug?
+      placeholder: Concise description of the unexpected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Provide minimal, precise steps.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      placeholder: What happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include versions and runtime details.
+      placeholder: |
+        - App version/commit:
+        - Browser (if frontend):
+        - OS:
+        - API environment (dev/stg/prod):
+        - Django/DRF version (if relevant):
+        - Node/Next.js version (if relevant):
+
+  - type: input
+    id: branch_name
+    attributes:
+      label: Suggested branch name
+      description: Must start with `fix/` and be created from `master`.
+      placeholder: "fix/456-login-redirect-loop"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Paste relevant logs or attach screenshots (remove secrets).

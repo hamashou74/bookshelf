@@ -1,0 +1,60 @@
+name: Chore
+description: Maintenance, refactor, dependency, tooling (branch: chore/* from master)
+title: "[Chore]: "
+labels: ["type: chore", "status: triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Branching rule
+        Create a branch from `master`:
+        - `chore/<issue-number>-<short-slug>`
+        Example: `chore/789-upgrade-django`
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Frontend (Next.js)
+        - Backend (Django REST Framework)
+        - API contract
+        - Database
+        - CI/CD & DevOps
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What outcome are we targeting (e.g., upgrade, refactor, cleanup)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / tasks
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: input
+    id: branch_name
+    attributes:
+      label: Suggested branch name
+      description: Must start with `chore/` and be created from `master`.
+      placeholder: "chore/789-upgrade-django"
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / rollback
+      description: Any compatibility concerns, migration steps, or rollback plan.
